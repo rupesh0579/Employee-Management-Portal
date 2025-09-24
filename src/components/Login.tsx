@@ -82,7 +82,7 @@ const Login: React.FC = () => {
           {error && <p className="text-red-500 mb-4">{error}</p>}
           <button
             type="submit"
-            className="w-full bg-green-700 text-white p-2 rounded hover:bg-green-800 disabled:bg-green-300"
+            className="w-full bg-green-700 text-white p-2 rounded cursor-pointer hover:bg-green-800 disabled:bg-green-300"
             disabled={isLoading}
           >
            {isLoading ? "Loading..." : "Login"}
