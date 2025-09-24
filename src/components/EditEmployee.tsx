@@ -121,7 +121,7 @@ const EditEmployeeDrawer: React.FC<EditEmployeeDrawerProps> = ({
             </button>
             <button
               type="submit"
-              className="py-2 px-4 bg-purple-800 text-white rounded hover:bg-purple-900"
+              className="py-2 px-4 bg-green-700 text-white rounded hover:bg-green-800"
             >
               Save
             </button>

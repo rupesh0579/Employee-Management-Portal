@@ -123,7 +123,7 @@ const EmployeeList: React.FC = () => {
             </div>
             <button
               onClick={handleAddModalOpen}
-              className="py-2 px-4 bg-purple-800 text-white rounded-md hover:bg-purple-900 cursor-pointer"
+              className="py-2 px-4 bg-green-700 text-white rounded-md hover:bg-green-800 cursor-pointer"
             >
               + Add Employee
             </button>

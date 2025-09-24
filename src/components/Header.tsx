@@ -41,7 +41,7 @@ const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
             </button>
           </div>
           <div>
-             <span className="text-gray-950 dark:text-gray-300 font-medium">
+             <span className="text-gray-950 dark:text-gray-300 font-medium hidden md:block">
             Welcome, {username}
           </span>
           </div>
@@ -52,7 +52,7 @@ const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
               localStorage.removeItem("username"); // ✅ Clear username on logout
               window.location.reload();
             }}
-            className="py-2 px-4 bg-red-500 text-white rounded-md hover:bg-red-600 cursor-pointer"
+            className="py-1.5 px-4 bg-red-500 text-white rounded-md hover:bg-red-600 cursor-pointer"
           >
             Logout
           </button>
