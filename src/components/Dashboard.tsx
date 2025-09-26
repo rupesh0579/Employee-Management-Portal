@@ -102,6 +102,7 @@ const EmployeeList: React.FC = () => {
   );
 
   const sortedEmployees = sortEmployees(filteredEmployees, sort);
+  console.log("Sorted Employees:", sortedEmployees);
 
   const onSubmit: SubmitHandler<FilterFormInputs> = () => {
   };

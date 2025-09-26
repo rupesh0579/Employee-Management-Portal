@@ -41,9 +41,9 @@ const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
             </button>
           </div>
           <div>
-             <span className="text-gray-950 dark:text-gray-300 font-medium hidden md:block">
-            Welcome, {username}
-          </span>
+            <span className="text-gray-950 dark:text-gray-300 font-medium hidden md:block">
+              Welcome, {username}
+            </span>
           </div>
 
           <button
@@ -63,4 +63,3 @@ const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
 };
 
 export default Header;
-
