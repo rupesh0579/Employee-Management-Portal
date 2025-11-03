@@ -8,7 +8,7 @@ interface ReportsTabProps {
 
 const ReportsTab: React.FC<ReportsTabProps> = ({ employees }) => {
   return (
-    <main className="px-12 py-6">
+    <main className="px-12">
       <Reports employees={employees} />
     </main>
   );

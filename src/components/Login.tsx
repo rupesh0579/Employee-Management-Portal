@@ -1,36 +1,45 @@
 import * as React from "react";
 import { useForm, type SubmitHandler } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 interface LoginFormInputs {
   username: string;
   password: string;
 }
 
-// Hardcoded credentials
+interface LoginProps {
+  onLogin: () => void;
+}
+
 const credentials = { username: "admin", password: "admin123" };
 
-const Login: React.FC = () => {
+const Login: React.FC<LoginProps> = ({ onLogin }) => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<LoginFormInputs>();
-  const [error, setError] = React.useState<string>("");
-  const [isLoading, setIsLoading] = React.useState<boolean>(false);
+  const [error, setError] = React.useState("");
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const onSubmit: SubmitHandler<LoginFormInputs> = async (data) => {
+    setError("");
     setIsLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 1000)); // 1-second delay
+
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
     if (
       data.username === credentials.username &&
       data.password === credentials.password
     ) {
-      // ✅ Save login state + username
       localStorage.setItem("isAuthenticated", "true");
       localStorage.setItem("username", data.username);
-      window.location.reload();
+
+      onLogin();
+      navigate("/employees", { replace: true });
     } else {
-      setError("Invalid credentials");
+      setError("Invalid username or password");
       setIsLoading(false);
     }
   };
@@ -44,6 +53,7 @@ const Login: React.FC = () => {
         <h3 className="text-2xl font-bold mb-6 text-center text-purple-950">
           Login
         </h3>
+
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -62,6 +72,7 @@ const Login: React.FC = () => {
               </p>
             )}
           </div>
+
           <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700 mb-1">
               *Password
@@ -79,13 +90,19 @@ const Login: React.FC = () => {
               </p>
             )}
           </div>
+
           {error && <p className="text-red-500 mb-4">{error}</p>}
+
           <button
             type="submit"
-            className="w-full bg-green-700 text-white p-2 rounded cursor-pointer hover:bg-green-800 disabled:bg-green-300"
+            className={`w-full bg-green-700 text-white p-2 rounded transition-colors ${
+              isLoading
+                ? "bg-green-300 cursor-not-allowed"
+                : "hover:bg-green-800"
+            }`}
             disabled={isLoading}
           >
-           {isLoading ? "Loading..." : "Login"}
+            {isLoading ? "Logging in..." : "Login"}
           </button>
         </form>
       </div>
@@ -94,4 +111,3 @@ const Login: React.FC = () => {
 };
 
 export default Login;
-
