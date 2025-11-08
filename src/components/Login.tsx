@@ -104,6 +104,10 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
           >
             {isLoading ? "Logging in..." : "Login"}
           </button>
+          <br />
+          <p className="text-gray-400 text-sm">
+            username: admin, password: admin123
+          </p>
         </form>
       </div>
     </div>
