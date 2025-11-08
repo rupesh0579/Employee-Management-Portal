@@ -113,7 +113,7 @@ export const Reports: React.FC<ReportsProps> = ({ employees }) => {
 
   return (
     <div>
-      <div className="mb-2 mt-18">
+      <div className="mb-2">
         <h1 className="text-2xl font-bold text-purple-950 dark:text-white">
           Employee Reports
         </h1>
@@ -190,12 +190,12 @@ export const Reports: React.FC<ReportsProps> = ({ employees }) => {
                 cx="50%"
                 cy="50%"
                 labelLine={false}
-                label={({ role, percent }: { role: string; percent: number }) => `${role} ${(percent * 100).toFixed(0)}%`}
+                // label={({ role, percent }: { role: string; percent: number }) => `${role} ${(percent * 100).toFixed(0)}%`}
                 outerRadius={80}
                 fill="#8884d8"
                 dataKey="count"
               >
-                {roleData.map((entry, index) => (
+                {roleData.map((_, index) => (
                   <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                 ))}
               </Pie>
